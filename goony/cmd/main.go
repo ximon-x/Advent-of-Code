@@ -1,7 +1,15 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"goony/stuff"
+)
 
 func main() {
-	fmt.Println("Hello World")
+	answer, err := stuff.RockPaperScissors()
+	if err != nil {
+		return
+	}
+
+	fmt.Println(answer)
 }
