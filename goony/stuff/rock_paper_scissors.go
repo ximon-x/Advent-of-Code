@@ -10,38 +10,56 @@ var points map[string]int
 func calcPoints(op string, cp string) int {
 	s := points[cp]
 
-	//  Rock =>      A & X
-	//  Paper =>     B & Y
-	//  Scissors =>  C & Z
+	//  Rock        =>  A
+	//  Paper       =>  B
+	//  Scissors    =>  C
+
+	//  Lose        =>  X
+	//  Draw        =>  Y
+	//  Win         =>  Z
 
 	if op == "A" {
 		if cp == "X" {
-			s += points["D"]
-		} else if cp == "Y" {
-			s += points["W"]
-		} else if cp == "Z" {
-			s += points["L"]
+			s += points["C"]
+		}
+
+		if cp == "Y" {
+			s += points["A"]
+		}
+
+		if cp == "Z" {
+			s += points["B"]
 		}
 	}
 
 	if op == "B" {
 		if cp == "X" {
-			s += points["L"]
-		} else if cp == "Y" {
-			s += points["D"]
-		} else if cp == "Z" {
-			s += points["W"]
+			s += points["A"]
 		}
+
+		if cp == "Y" {
+			s += points["B"]
+		}
+
+		if cp == "Z" {
+			s += points["C"]
+		}
+
 	}
 
 	if op == "C" {
 		if cp == "X" {
-			s += points["W"]
-		} else if cp == "Y" {
-			s += points["L"]
-		} else if cp == "Z" {
-			s += points["D"]
+			s += points["B"]
 		}
+
+		if cp == "Y" {
+			s += points["C"]
+		}
+
+		if cp == "Z" {
+			s += points["A"]
+		}
+
 	}
 
 	return s
@@ -57,13 +75,13 @@ func RockPaperScissors() (int, error) {
 	chunks := strings.Split(data, "\n")
 
 	points = map[string]int{
-		"X": 1,
-		"Y": 2,
-		"Z": 3,
+		"A": 1,
+		"B": 2,
+		"C": 3,
 
-		"L": 0,
-		"D": 3,
-		"W": 6,
+		"X": 0,
+		"Y": 3,
+		"Z": 6,
 	}
 
 	score := 0
