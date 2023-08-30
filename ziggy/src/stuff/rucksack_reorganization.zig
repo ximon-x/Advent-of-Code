@@ -1,8 +1,39 @@
 const std = @import("std");
+const testing = std.testing;
+
+fn generate_alphabets() [52]usize {
+    var chars: [52]usize = undefined;
+
+    for (0..26) |i| {
+        chars[i] = i + 'a';
+        chars[i + 26] = i + 'A';
+    }
+
+    return chars;
+}
+
+fn find_unique(line: []u8) usize {
+    const n = line.len;
+    var unique: usize = 0;
+
+    for (0..n / 2) |i| {
+        for (n / 2..n) |j| {
+            if (line[i] == line[j]) {
+                unique = line[j];
+            }
+        }
+
+        if (unique != 0) {
+            return unique;
+        }
+    }
+
+    return unique;
+}
 
 pub fn rucksack_reorganization() !void {
-    // Captures standard output
-    const stdout = std.io.getStdOut().writer();
+    const alphabets = generate_alphabets();
+    var score: usize = 0;
 
     // Opens the necessary file
     var file = try std.fs
@@ -14,6 +45,13 @@ pub fn rucksack_reorganization() !void {
 
     var buf: [1024]u8 = undefined;
     while (try file.reader().readUntilDelimiterOrEof(&buf, '\n')) |line| {
-        try stdout.print("Line: {s}!\n", .{line});
+        const unique = find_unique(line);
+
+        for (0..alphabets.len) |i| {
+            if (unique == alphabets[i]) {
+                score += i + 1;
+            }
+        }
     }
+    std.debug.print("Final Score: {d}\n", .{score});
 }
