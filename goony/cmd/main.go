@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	answer, err := stuff.RockPaperScissors()
+	answer, err := stuff.Trebutchet()
 	if err != nil {
 		return
 	}

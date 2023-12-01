@@ -1,7 +1,9 @@
 package stuff
 
 import (
+	"fmt"
 	"os"
+	"path/filepath"
 	"strings"
 )
 
@@ -66,12 +68,15 @@ func calcPoints(op string, cp string) int {
 }
 
 func RockPaperScissors() (int, error) {
-	d, err := os.ReadFile("/home/simon/Projects/Personal/Advent-of-Code/goony/assets/rock_paper_scissors_input.txt")
+	absPath, err := filepath.Abs("../goony/assets/rock_paper_scissors_input.txt")
 	if err != nil {
+		fmt.Printf("Could not get asset.")
 		return 0, err
 	}
 
-	data := string(d)
+	file, err := os.ReadFile(absPath)
+	data := string(file)
+
 	chunks := strings.Split(data, "\n")
 
 	points = map[string]int{

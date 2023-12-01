@@ -11,6 +11,11 @@ Repo for holding my Advent of Code solutions.
 ## Years Attempted
 
 - 2023
+
+  - [ ] Trebuchet?!
+
+- 2022
+
   - [x] Calorie Counting
-  - [ ] Rock Paper Scissors
+  - [x] Rock Paper Scissors
   - [ ] Rucksack Reorganization
