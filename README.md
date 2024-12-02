@@ -28,6 +28,5 @@ Repo for holding my Advent of Code solutions.
 ## Years Attempted
 
 - 2024
-  - [ ]
-
-
+  - [ ] Day 1: Historian Hysteria (Lua)
+  - [ ] Day 2: Red-Nosed Reports (Dart)
