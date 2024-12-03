@@ -30,3 +30,4 @@ Repo for holding my Advent of Code solutions.
 - 2024
   - [ ] Day 1: Historian Hysteria (Lua)
   - [ ] Day 2: Red-Nosed Reports (Dart)
+  - [ ] Day 3: Mull It Over (C++)
